@@ -95,7 +95,7 @@ export default function LoginPage() {
           type: "success",
           text: "Login successful! Redirecting...",
         });
-
+        console.log(data)
         // Store token if provided
         if (data.token) {
           localStorage.setItem("token", data.token);
@@ -106,6 +106,7 @@ export default function LoginPage() {
           router.push("/");
         }, 1500);
       } else {
+        console.log(data)
         setStatusMessage({
           type: "error",
           text: data.message || "Invalid email or password. Please try again.",
