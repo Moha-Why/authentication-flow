@@ -30,4 +30,5 @@ export function middleware(req: NextRequest) {
 // Apply middleware to protected routes
 export const config = {
   matcher: ["/api/auth/user-data"], // change this to your protected routes
+  runtime: "nodejs",
 };
