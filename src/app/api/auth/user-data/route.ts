@@ -15,13 +15,13 @@ export async function GET(request: Request) {
         if (!email) {
             throw Error("TOKEN INVALID")
         }
-        const { data: user, error } = await supabase.from("users").select("name").eq("email", email).single();
-        // if (error) {
-        //     throw error;
-        // }
+        const { data, error } = await supabase.from("users").select("name").eq("email", email).single();
+        if (error) {
+            throw error;
+        }
         return NextResponse.json({ 
             status: "success",
-            user
+            data
         });
     } catch (error) {
         return NextResponse.json({ 
