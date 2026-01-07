@@ -15,19 +15,19 @@ export async function GET(request: Request) {
         if (!email) {
             throw Error("TOKEN INVALID")
         }
-        const { data, error } = await supabase.from("users").select("name").eq("email", email).single();
-        if (error) {
-            throw error;
-        }
+        const { data: user, error } = await supabase.from("users").select("name").eq("email", email).single();
+        // if (error) {
+        //     throw error;
+        // }
         return NextResponse.json({ 
             status: "success",
-            data
+            user
         });
     } catch (error) {
         return NextResponse.json({ 
             status: "error",
             statusCode: 400,
-            message: error
+            message: error,
         });
     }
 }
