@@ -40,6 +40,7 @@ export default function Page() {
 
         if (!response.ok) {
           const err = await response.json();
+          console.log(err)
           throw new Error(err.message || "Failed to fetch user data");
         }
 
